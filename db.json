@@ -1,0 +1,40 @@
+{
+  "companies": [
+    {
+      "name": "Comcast",
+      "location": "Philadelphia, PA",
+      "priority": false,
+      "id": "1"
+    },
+    {
+      "name": "Netflix",
+      "location": "Pittsburg, PA",
+      "priority": true,
+      "id": "2"
+    },
+    {
+      "name": "Hulu",
+      "location": "New York City, NY",
+      "priority": true,
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "name": "Audible",
+      "location": "Boston, MA",
+      "priority": false
+    },
+    {
+      "id": "50ca",
+      "name": "Wawa",
+      "location": "Philadelphia, PA",
+      "priority": true
+    },
+    {
+      "id": "a4ce",
+      "name": "Verizon",
+      "location": "Delaware",
+      "priority": false
+    }
+  ]
+}
