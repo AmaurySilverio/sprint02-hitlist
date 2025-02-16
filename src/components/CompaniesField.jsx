@@ -1,5 +1,10 @@
 import Company from "./Company";
-const CompaniesField = ({ companiesToShow, toggleImportance }) => {
+const CompaniesField = ({
+  companiesToShow,
+  toggleImportance,
+  removeCompany,
+  showCompanyDetails,
+}) => {
   return (
     <ul>
       {companiesToShow.length < 1 ? (
@@ -10,6 +15,8 @@ const CompaniesField = ({ companiesToShow, toggleImportance }) => {
             key={company.id}
             company={company}
             toggleImportance={toggleImportance}
+            showCompanyDetails={showCompanyDetails}
+            removeCompany={removeCompany}
           />
         ))
       )}
