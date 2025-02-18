@@ -2,7 +2,7 @@ const Company = ({
   company,
   toggleImportance,
   showCompanyDetails,
-  removeCompany,
+  // removeCompany,
 }) => {
   const star = company.priority ? "fa-solid fa-star" : "fa-regular fa-star";
   return (
@@ -15,7 +15,7 @@ const Company = ({
         style={{ color: "#FFD43B" }}
         onClick={() => toggleImportance(company.id)}
       ></i>
-      <button onClick={() => removeCompany(company.id)}>Delete</button>
+      {/* <button onClick={() => removeCompany(company.id)}>Delete</button> */}
     </li>
   );
 };

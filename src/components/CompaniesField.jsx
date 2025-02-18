@@ -16,7 +16,7 @@ const CompaniesField = ({
             company={company}
             toggleImportance={toggleImportance}
             showCompanyDetails={showCompanyDetails}
-            removeCompany={removeCompany}
+            // removeCompany={removeCompany}
           />
         ))
       )}

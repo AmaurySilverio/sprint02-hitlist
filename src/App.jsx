@@ -13,6 +13,8 @@ function App() {
   const [companies, setCompanies] = useState([]);
   const [newCompany, setNewCompany] = useState("");
   const [newLocation, setNewLocation] = useState("");
+  const [newPosition, setNewPosition] = useState("");
+  const [newDescription, setNewDescription] = useState("");
   const [priority, setPriority] = useState("no");
   const [showAll, setShowAll] = useState(true);
   const [newSearch, setNewSearch] = useState("");
@@ -68,6 +70,9 @@ function App() {
             filteredCompanies.map((c) => (c.id === id ? returnedCompany : c))
           );
         }
+        if (clickedCompany) {
+          setClickedCompany(changedCompany);
+        }
       })
       .catch((error) => {
         setModal(true);
@@ -93,6 +98,8 @@ function App() {
     const companyObject = {
       name: newCompany.trim(),
       location: newLocation.trim(),
+      position: newPosition.trim(),
+      description: newDescription.trim(),
       priority: priority === "yes" ? true : false,
     };
     if (
@@ -111,6 +118,8 @@ function App() {
       }, 5000);
       setNewCompany("");
       setNewLocation("");
+      setNewPosition("");
+      setNewDescription("");
       setPriority("no");
       return false;
     }
@@ -121,6 +130,8 @@ function App() {
         setCompanies(companies.concat(returnedCompany));
         setNewCompany("");
         setNewLocation("");
+        setNewPosition("");
+        setNewDescription("");
         setPriority("no");
       })
       .catch((error) => {
@@ -143,6 +154,8 @@ function App() {
         .remove(id)
         .then(() => {
           setCompanies(companies.filter((c) => c.id !== id));
+          setCompanyDetailsModal(false);
+          setClickedCompany(null);
           if (filteredCompanies.length > 0) {
             setFilteredCompanies(filteredCompanies.filter((c) => c.id !== id));
           }
@@ -167,7 +180,6 @@ function App() {
     setConfirmRemove(() => handleConfirmDeletion);
   };
   const showCompanyDetails = (company) => {
-    console.log("FUCK YES");
     setClickedCompany(company);
     setCompanyDetailsModal(true);
   };
@@ -177,6 +189,12 @@ function App() {
   };
   const handleLocationInputChange = (event) => {
     setNewLocation(event.target.value);
+  };
+  const handlePositionInputChange = (event) => {
+    setNewPosition(event.target.value);
+  };
+  const handleDescriptionInputChange = (event) => {
+    setNewDescription(event.target.value);
   };
   const handlePriorityChange = (event) => {
     setPriority(event.target.value);
@@ -221,7 +239,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <button onClick={() => setCompanyFormModal(true)}>Create</button>
+      <button onClick={() => setCompanyFormModal(true)}>Add Company</button>
       {companyFormModal ? (
         <CompanyForm
           onSubmit={addCompany}
@@ -229,6 +247,10 @@ function App() {
           companyInputValue={newCompany}
           onLocationInputChange={handleLocationInputChange}
           locationInputValue={newLocation}
+          onPositionInputChange={handlePositionInputChange}
+          positionInputValue={newPosition}
+          onDescriptionInputChange={handleDescriptionInputChange}
+          descriptionInputValue={newDescription}
           priority={priority}
           onRadioChange={handlePriorityChange}
           openCompanyFormModal={companyFormModal}
@@ -259,13 +281,18 @@ function App() {
       <CompaniesField
         companiesToShow={[...companiesToShow]}
         toggleImportance={toggleImportanceOf}
-        removeCompany={removeCompany}
+        // removeCompany={removeCompany}
         showCompanyDetails={showCompanyDetails}
       />
       {companyDetailsModal && clickedCompany && (
         <CompanyDetails
           openCompanyDetailsModal={companyDetailsModal}
-          closeCompanyDetailsModal={() => setCompanyDetailsModal(false)}
+          closeCompanyDetailsModal={() => {
+            setCompanyDetailsModal(false);
+            setClickedCompany(null);
+          }}
+          toggleImportance={toggleImportanceOf}
+          removeCompany={removeCompany}
           company={clickedCompany}
         />
       )}

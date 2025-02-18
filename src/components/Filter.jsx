@@ -20,7 +20,7 @@ const Filter = ({
         </button> */}
         <button onClick={onClearSearchClick}>Clear Filter</button>
         <button onClick={onShowAllClick}>
-          Show {showAll ? "Priority Companies" : "All Companies"}
+          Show {showAll ? "Priority" : "All"}
         </button>
       </div>
     </div>
