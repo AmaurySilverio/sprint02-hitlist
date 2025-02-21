@@ -5,8 +5,9 @@ const Company = ({
   // removeCompany,
 }) => {
   const star = company.priority ? "fa-solid fa-star" : "fa-regular fa-star";
+  const applied = company.applied ? "applied" : "";
   return (
-    <li>
+    <li className="card" id={applied}>
       <span onClick={() => showCompanyDetails(company)}>
         {company.name} <span>{company.location}</span>
       </span>
@@ -15,6 +16,7 @@ const Company = ({
         style={{ color: "#FFD43B" }}
         onClick={() => toggleImportance(company.id)}
       ></i>
+      {/* <span>{company.applied}</span> */}
       {/* <button onClick={() => removeCompany(company.id)}>Delete</button> */}
     </li>
   );

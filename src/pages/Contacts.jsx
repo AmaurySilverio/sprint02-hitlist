@@ -17,6 +17,7 @@ const Contacts = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [newSearch, setNewSearch] = useState("");
   const [filteredContacts, setFilteredContacts] = useState([]);
+  const [selectedItem, setSelectedItem] = useState("all");
   const [contacts, setContacts] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -31,7 +32,6 @@ const Contacts = () => {
   const [github, setGithub] = useState("");
   const [notes, setNotes] = useState("");
   const [priority, setPriority] = useState("no");
-  const [showAll, setShowAll] = useState(true);
   const [contactFormModal, setContactFormModal] = useState(false);
 
   useEffect(() => {
@@ -135,7 +135,7 @@ const Contacts = () => {
   const contactsToShow =
     filteredContacts.length === 0 && newSearch.trim() !== ""
       ? []
-      : showAll
+      : selectedItem === "all"
       ? filteredContacts.length < 1
         ? contacts
         : filteredContacts
@@ -296,7 +296,8 @@ const Contacts = () => {
     setFilteredContacts([]);
     setNewSearch("");
   };
-  const handleShowAllClick = () => setShowAll(!showAll);
+  const handleSetSelectedItem = (e) => setSelectedItem(e.target.value);
+
   const showContactDetails = (contact) => {
     setClickedContact(contact);
     setContactDetailsModal(true);
@@ -304,7 +305,6 @@ const Contacts = () => {
   return (
     <>
       <Navbar />
-      <button onClick={() => setContactFormModal(true)}>Add Contact</button>
       {contactFormModal ? (
         <ContactForm
           onSubmit={addContact}
@@ -345,8 +345,9 @@ const Contacts = () => {
         onClearSearchClick={handleClearSearchClick}
         // onSubmitClick={handleSearchSubmit}
         // submitType="submit"
-        onShowAllClick={handleShowAllClick}
-        showAll={showAll}
+        selectedItem={selectedItem}
+        handleSetSelectedItem={handleSetSelectedItem}
+        clickAddButton={() => setContactFormModal(true)}
       />
       <ContactsField
         contactsToShow={[...contactsToShow]}

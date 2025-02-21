@@ -6,21 +6,23 @@ const CompaniesField = ({
   showCompanyDetails,
 }) => {
   return (
-    <ul>
-      {companiesToShow.length < 1 ? (
-        <h3>No Companies Found</h3>
-      ) : (
-        companiesToShow.map((company) => (
-          <Company
-            key={company.id}
-            company={company}
-            toggleImportance={toggleImportance}
-            showCompanyDetails={showCompanyDetails}
-            // removeCompany={removeCompany}
-          />
-        ))
-      )}
-    </ul>
+    <div className="companies-container">
+      <ul>
+        {companiesToShow.length < 1 ? (
+          <h3>No Companies Found</h3>
+        ) : (
+          companiesToShow.map((company) => (
+            <Company
+              key={company.id}
+              company={company}
+              toggleImportance={toggleImportance}
+              showCompanyDetails={showCompanyDetails}
+              // removeCompany={removeCompany}
+            />
+          ))
+        )}
+      </ul>
+    </div>
   );
 };
 

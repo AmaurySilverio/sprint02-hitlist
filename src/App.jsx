@@ -16,7 +16,8 @@ function App() {
   const [newPosition, setNewPosition] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [priority, setPriority] = useState("no");
-  const [showAll, setShowAll] = useState(true);
+  const [applied, setApplied] = useState("no");
+  const [selectedItem, setSelectedItem] = useState("all");
   const [newSearch, setNewSearch] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [modal, setModal] = useState(false);
@@ -47,13 +48,27 @@ function App() {
       });
   }, []);
 
+  // const companiesToShow =
+  //   filteredCompanies.length === 0 && newSearch.trim() !== ""
+  //     ? []
+  //     : showAll
+  //     ? filteredCompanies.length < 1
+  //       ? companies
+  //       : filteredCompanies
+  //     : filteredCompanies.length < 1
+  //     ? companies.filter((company) => company.priority)
+  //     : filteredCompanies.filter((company) => company.priority);
   const companiesToShow =
     filteredCompanies.length === 0 && newSearch.trim() !== ""
       ? []
-      : showAll
+      : selectedItem === "all"
       ? filteredCompanies.length < 1
         ? companies
         : filteredCompanies
+      : selectedItem === "applied"
+      ? filteredCompanies.length < 1
+        ? companies.filter((company) => company.applied)
+        : filteredCompanies.filter((company) => company.applied)
       : filteredCompanies.length < 1
       ? companies.filter((company) => company.priority)
       : filteredCompanies.filter((company) => company.priority);
@@ -101,6 +116,7 @@ function App() {
       position: newPosition.trim(),
       description: newDescription.trim(),
       priority: priority === "yes" ? true : false,
+      applied: applied === "yes" ? true : false,
     };
     if (
       companies.find(
@@ -121,6 +137,7 @@ function App() {
       setNewPosition("");
       setNewDescription("");
       setPriority("no");
+      setApplied("no");
       return false;
     }
 
@@ -133,6 +150,7 @@ function App() {
         setNewPosition("");
         setNewDescription("");
         setPriority("no");
+        setApplied("no");
       })
       .catch((error) => {
         setModal(true);
@@ -199,6 +217,9 @@ function App() {
   const handlePriorityChange = (event) => {
     setPriority(event.target.value);
   };
+  const handleAppliedChange = (event) => {
+    setApplied(event.target.value);
+  };
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value;
     console.log(searchTerm);
@@ -234,12 +255,17 @@ function App() {
     setFilteredCompanies([]);
     setNewSearch("");
   };
-  const handleShowAllClick = () => setShowAll(!showAll);
+  const handleSetSelectedItem = (e) => setSelectedItem(e.target.value);
 
   return (
     <>
       <Navbar />
-      <button onClick={() => setCompanyFormModal(true)}>Add Company</button>
+      {/* <button
+        className="addCompanyButton"
+        onClick={() => setCompanyFormModal(true)}
+      >
+        Add Company
+      </button> */}
       {companyFormModal ? (
         <CompanyForm
           onSubmit={addCompany}
@@ -253,6 +279,8 @@ function App() {
           descriptionInputValue={newDescription}
           priority={priority}
           onRadioChange={handlePriorityChange}
+          applied={applied}
+          onAppliedRadioChange={handleAppliedChange}
           openCompanyFormModal={companyFormModal}
           closeCompanyFormModal={() => setCompanyFormModal(false)}
         />
@@ -275,8 +303,10 @@ function App() {
         onClearSearchClick={handleClearSearchClick}
         // onSubmitClick={handleSearchSubmit}
         // submitType="submit"
-        onShowAllClick={handleShowAllClick}
-        showAll={showAll}
+        selectedItem={selectedItem}
+        handleSetSelectedItem={handleSetSelectedItem}
+        optionChoiceRender={applied === "no"}
+        clickAddButton={() => setCompanyFormModal(true)}
       />
       <CompaniesField
         companiesToShow={[...companiesToShow]}

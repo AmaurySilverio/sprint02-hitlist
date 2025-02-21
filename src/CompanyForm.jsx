@@ -12,6 +12,8 @@ const CompanyForm = ({
   descriptionInputValue,
   onRadioChange,
   priority,
+  onAppliedRadioChange,
+  applied,
   openCompanyFormModal,
   closeCompanyFormModal,
 }) => {
@@ -83,6 +85,25 @@ const CompanyForm = ({
                 cols="40"
                 required
               />
+            </div>
+            <div>
+              <label htmlFor="company-apply">Have you applied?</label>
+              <input
+                type="radio"
+                id="yes-apply-radio"
+                value="yes"
+                onChange={onAppliedRadioChange}
+                checked={applied === "yes"}
+              />
+              <label htmlFor="yes-apply-radio">Yes</label>
+              <input
+                type="radio"
+                id="no-apply-radio"
+                value="no"
+                onChange={onAppliedRadioChange}
+                checked={applied === "no"}
+              />
+              <label htmlFor="no-apply-radio">No</label>
             </div>
             <div>
               <label htmlFor="company-priority">

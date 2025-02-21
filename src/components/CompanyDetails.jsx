@@ -37,6 +37,7 @@ const CompanyDetails = ({
           style={{ color: "#FFD43B" }}
           onClick={() => toggleImportance(company.id)}
         ></i>
+        {company.applied ? <span>Applied!</span> : null}
         <button autoFocus onClick={closeCompanyDetailsModal}>
           Close
         </button>
