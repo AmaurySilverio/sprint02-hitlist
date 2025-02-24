@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
+import Button from "./Button";
 
 const ConfirmNotification = ({
   openConfirmationModal,
   closeConfirmationModal,
   confirmRemove,
+  confirmTitle,
 }) => {
   const ref = useRef();
 
@@ -16,12 +18,23 @@ const ConfirmNotification = ({
   }, [openConfirmationModal]);
 
   return (
-    <dialog ref={ref} onCancel={closeConfirmationModal}>
-      <p>Are you sure you want to delete?</p>
-      <button autoFocus onClick={closeConfirmationModal}>
-        Cancel
-      </button>
-      <button onClick={confirmRemove}>Yes</button>
+    <dialog
+      ref={ref}
+      onCancel={closeConfirmationModal}
+      className="confirm-dialog"
+    >
+      <h3 className="confirm-title">{confirmTitle}</h3>
+      <p className="confirm-p">Are you sure you want to delete?</p>
+      <div className="confirm-buttons-container">
+        <Button onClick={closeConfirmationModal}>Cancel</Button>
+        <Button onClick={confirmRemove} className="delete-btn">
+          Delete
+        </Button>
+        {/* <button autoFocus onClick={closeConfirmationModal}>
+          Cancel
+        </button> */}
+        {/* <button onClick={confirmRemove}>Yes</button> */}
+      </div>
     </dialog>
   );
 };

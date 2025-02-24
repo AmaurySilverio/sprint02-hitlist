@@ -1,95 +1,12 @@
 {
   "companies": [
     {
-      "id": "48e8",
-      "name": "Hulu",
-      "location": "Philadelphia, PA",
-      "position": "Software Engineer",
-      "priority": true
-    },
-    {
-      "id": "2992",
-      "name": "Audible",
-      "location": "Philadelphia",
-      "position": "Software Engineer",
-      "priority": false
-    },
-    {
       "id": "7401",
       "name": "Wawa",
       "location": "Philadelphia",
       "position": "Software Engineer",
-      "priority": true
-    },
-    {
-      "id": "8053",
-      "name": "test",
-      "location": "test",
-      "position": "no",
-      "priority": false
-    },
-    {
-      "id": "b387",
-      "name": "test2",
-      "location": "teste",
-      "position": "yes",
-      "priority": true
-    },
-    {
-      "id": "d0b9",
-      "name": "asf",
-      "location": "sf",
-      "position": "as",
-      "priority": false
-    },
-    {
-      "id": "a971",
-      "name": "sdf",
-      "location": "sf",
-      "position": "asdf",
-      "priority": false
-    },
-    {
-      "id": "d23c",
-      "name": "sf",
-      "location": "ef",
-      "position": "af",
-      "priority": false
-    },
-    {
-      "id": "fc80",
-      "name": "gf",
-      "location": "ef",
-      "position": "as",
-      "priority": false
-    },
-    {
-      "id": "8c10",
-      "name": "gw",
-      "location": "dg",
-      "position": "ge",
-      "priority": true
-    },
-    {
-      "id": "cfe7",
-      "name": "ijj",
-      "location": "oe",
-      "position": "ojj",
-      "priority": true
-    },
-    {
-      "id": "b9e4",
-      "name": "efw",
-      "location": "aefw",
-      "position": "lrgw",
-      "priority": false
-    },
-    {
-      "id": "16c1",
-      "name": "egw",
-      "location": "rgwg",
-      "position": "gewrg",
-      "priority": true
+      "priority": true,
+      "applied": false
     },
     {
       "id": "50b5",
@@ -98,7 +15,7 @@
       "position": "lasfj",
       "description": "paragraph here",
       "priority": true,
-      "applied": true
+      "applied": false
     },
     {
       "id": "78c2",
@@ -106,6 +23,34 @@
       "location": "Philadelphia, PA",
       "position": "Nurse",
       "description": "blah blah",
+      "priority": false,
+      "applied": true
+    },
+    {
+      "id": "8ce7",
+      "name": "Home Depot",
+      "location": "Atlanta, GA",
+      "position": "Software Engineer",
+      "description": "Full time SWE position. 2 years of experience required.",
+      "priority": false,
+      "applied": false
+    },
+    {
+      "id": "a93c",
+      "name": "Nalgene",
+      "location": "Philadelphia, PA",
+      "position": "Software Engineer II",
+      "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+      "priority": true,
+      "applied": false
+    },
+    {
+      "id": "f0ab",
+      "name": "Savers",
+      "location": "Danvers, MA",
+      "position": "Software Engineer",
+      "link": "https://savers.org",
+      "description": "The input value is automatically validated to ensure that it's either empty or a properly-formatted URL before the form can be submitted. The :valid and :invalid CSS pseudo-classes are automatically applied as appropriate to visually denote whether the current value of the field is a valid URL or not.",
       "priority": false,
       "applied": true
     }

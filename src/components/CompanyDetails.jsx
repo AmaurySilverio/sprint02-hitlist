@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
+import Button from "./Button";
 
 const CompanyDetails = ({
   openCompanyDetailsModal,
   closeCompanyDetailsModal,
   company,
   toggleImportance,
+  toggleApplied,
   removeCompany,
 }) => {
   const ref = useRef();
@@ -19,6 +21,7 @@ const CompanyDetails = ({
   const star = company.priority ? "fa-solid fa-star" : "fa-regular fa-star";
   return (
     <dialog
+      className="company-dialog"
       ref={ref}
       onCancel={closeCompanyDetailsModal}
       onClick={(e) => {
@@ -27,21 +30,47 @@ const CompanyDetails = ({
         }
       }}
     >
-      <div>
-        <h2>{company.name}</h2>
-        <h4>{company.location}</h4>
-        <h3>{company.position}</h3>
-        <p>{company.description}</p>
-        <i
-          className={star}
-          style={{ color: "#FFD43B" }}
-          onClick={() => toggleImportance(company.id)}
-        ></i>
-        {company.applied ? <span>Applied!</span> : null}
-        <button autoFocus onClick={closeCompanyDetailsModal}>
-          Close
-        </button>
-        <button onClick={() => removeCompany(company.id)}>Delete</button>
+      <div className="company-details-wrapper">
+        <div className="company-details-top-page">
+          <div className="company-details-content">
+            <h2>{company.name}</h2>
+            <p>{company.location}</p>
+            <h3>{company.position}</h3>
+            <p className="job-description">{company.description}</p>
+          </div>
+          <div className="company-details-toggles">
+            <a
+              href={company.link}
+              target="_blank"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className="icon-border"
+            >
+              <i className="fa-solid fa-link" style={{ color: "#7d7d7d" }}></i>
+            </a>
+            <i
+              className={`icon-border ${star}`}
+              style={{ color: "#FFD43B" }}
+              onClick={() => toggleImportance(company.id)}
+            ></i>
+            <Button
+              className={company.applied ? "applied-btn" : ""}
+              onClick={() => toggleApplied(company.id)}
+            >
+              {company.applied ? "Applied!" : "Applied?"}
+            </Button>
+          </div>
+        </div>
+        <div className="company-details-buttons">
+          <Button onClick={closeCompanyDetailsModal}>Close</Button>
+          <Button
+            onClick={() => removeCompany(company.id)}
+            className="delete-btn"
+          >
+            Delete
+          </Button>
+        </div>
       </div>
     </dialog>
   );

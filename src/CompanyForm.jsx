@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Button from "./components/Button";
 
 const CompanyForm = ({
   onSubmit,
@@ -16,6 +17,8 @@ const CompanyForm = ({
   applied,
   openCompanyFormModal,
   closeCompanyFormModal,
+  onLinkInputChange,
+  linkInputValue,
 }) => {
   const ref = useRef();
 
@@ -36,11 +39,12 @@ const CompanyForm = ({
           closeCompanyFormModal();
         }
       }}
+      className="company-form-dialog"
     >
-      <div>
-        <form onSubmit={onSubmit}>
-          <div>
-            <div>
+      <form onSubmit={onSubmit} className="company-form-wrapper">
+        <div className="company-form-content">
+          <div className="company-form-top">
+            <div className="company-form-input-data">
               <label htmlFor="company">Company: </label>
               <input
                 type="text"
@@ -51,7 +55,7 @@ const CompanyForm = ({
                 required
               />
             </div>
-            <div>
+            <div className="company-form-input-data">
               <label htmlFor="location">Location: </label>
               <input
                 type="text"
@@ -62,32 +66,46 @@ const CompanyForm = ({
                 required
               />
             </div>
+          </div>
+          <div className="company-form-input-data-full-width">
+            <label htmlFor="position">Position: </label>
+            <input
+              type="text"
+              id="position"
+              placeholder="Software Engineer"
+              value={positionInputValue}
+              onChange={onPositionInputChange}
+              required
+            />
+          </div>
+          <div className="company-form-input-data-full-width">
+            <label htmlFor="url">Link: </label>
+            <input
+              type="url"
+              id="url"
+              placeholder="https://example.com"
+              pattern="https://.*"
+              value={linkInputValue}
+              onChange={onLinkInputChange}
+              required
+            />
+          </div>
+          <div className="company-form-input-data-full-width">
+            <label htmlFor="description">Position Description: </label>
+            <textarea
+              // type="text"
+              id="description"
+              placeholder="Full-time hybrid position (In-Office 3 days a week)"
+              value={descriptionInputValue}
+              onChange={onDescriptionInputChange}
+              rows="6"
+              cols="40"
+              required
+            />
+          </div>
+          <div className="radio-btns">
+            <label htmlFor="company-apply">Have you applied?</label>
             <div>
-              <label htmlFor="position">Position: </label>
-              <input
-                type="text"
-                id="position"
-                placeholder="Software Engineer"
-                value={positionInputValue}
-                onChange={onPositionInputChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="description">Position Description: </label>
-              <textarea
-                // type="text"
-                id="description"
-                // placeholder="Software Engineer"
-                value={descriptionInputValue}
-                onChange={onDescriptionInputChange}
-                rows="4"
-                cols="40"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="company-apply">Have you applied?</label>
               <input
                 type="radio"
                 id="yes-apply-radio"
@@ -105,10 +123,12 @@ const CompanyForm = ({
               />
               <label htmlFor="no-apply-radio">No</label>
             </div>
+          </div>
+          <div className="radio-btns">
+            <label htmlFor="company-priority">
+              Is this Company a top priority?
+            </label>
             <div>
-              <label htmlFor="company-priority">
-                Is this Company a top priority?
-              </label>
               <input
                 type="radio"
                 id="yes-radio"
@@ -127,14 +147,14 @@ const CompanyForm = ({
               <label htmlFor="no-radio">No</label>
             </div>
           </div>
-          <div>
-            <button type="submit">Add</button>
-          </div>
-        </form>
-        <button autoFocus onClick={closeCompanyFormModal}>
-          Close
-        </button>
-      </div>
+        </div>
+        <div className="company-form-buttons">
+          <Button onClick={closeCompanyFormModal}>Close</Button>
+          <Button type="submit" className="small-add-btn">
+            Add
+          </Button>
+        </div>
+      </form>
     </dialog>
   );
 };

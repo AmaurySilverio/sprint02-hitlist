@@ -2,22 +2,47 @@ const Company = ({
   company,
   toggleImportance,
   showCompanyDetails,
-  // removeCompany,
+  removeCompany,
 }) => {
   const star = company.priority ? "fa-solid fa-star" : "fa-regular fa-star";
   const applied = company.applied ? "applied" : "";
   return (
-    <li className="card" id={applied}>
-      <span onClick={() => showCompanyDetails(company)}>
-        {company.name} <span>{company.location}</span>
-      </span>
-      <i
-        className={star}
-        style={{ color: "#FFD43B" }}
-        onClick={() => toggleImportance(company.id)}
-      ></i>
-      {/* <span>{company.applied}</span> */}
-      {/* <button onClick={() => removeCompany(company.id)}>Delete</button> */}
+    <li
+      className={`card ${applied}`}
+      // id={applied}
+      onClick={() => showCompanyDetails(company)}
+    >
+      <div className="company-title-container">
+        <h4>{company.name}</h4> <p>{company.position}</p>
+      </div>
+      <div className="icon-container">
+        <a
+          href={company.link}
+          target="_blank"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="icon-border"
+        >
+          <i className="fa-solid fa-link" style={{ color: "#7d7d7d" }}></i>
+        </a>
+        <i
+          className={`icon-border ${star}`}
+          style={{ color: "#FFD43B" }}
+          onClick={(e) => {
+            toggleImportance(company.id);
+            e.stopPropagation();
+          }}
+        ></i>
+        <i
+          className="icon-border fa-solid fa-trash"
+          style={{ color: "#7d7d7d" }}
+          onClick={(e) => {
+            removeCompany(company.id);
+            e.stopPropagation();
+          }}
+        ></i>
+      </div>
     </li>
   );
 };

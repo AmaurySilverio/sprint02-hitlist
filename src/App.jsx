@@ -13,6 +13,7 @@ function App() {
   const [companies, setCompanies] = useState([]);
   const [newCompany, setNewCompany] = useState("");
   const [newLocation, setNewLocation] = useState("");
+  const [newLink, setNewLink] = useState("");
   const [newPosition, setNewPosition] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [priority, setPriority] = useState("no");
@@ -106,6 +107,39 @@ function App() {
         }
       });
   };
+  const toggleApplied = (id) => {
+    const company = companies.find((c) => c.id === id);
+    const changedCompany = { ...company, applied: !company.applied };
+    companyService
+      .update(id, changedCompany)
+      .then((returnedCompany) => {
+        setCompanies(companies.map((c) => (c.id === id ? returnedCompany : c)));
+        if (filteredCompanies.length > 0) {
+          setFilteredCompanies(
+            filteredCompanies.map((c) => (c.id === id ? returnedCompany : c))
+          );
+        }
+        if (clickedCompany) {
+          setClickedCompany(changedCompany);
+        }
+      })
+      .catch((error) => {
+        setModal(true);
+        setErrorMessage(
+          `'${company.name}' was already deleted from the server.`
+        );
+        setTimeout(() => {
+          setModal(false);
+          setErrorMessage("");
+        }, 5000);
+        setCompanies(companies.filter((c) => c.id !== id));
+        if (filteredCompanies.length > 0) {
+          setFilteredCompanies(
+            filteredCompanies.map((c) => (c.id === id ? returnedCompany : c))
+          );
+        }
+      });
+  };
 
   const addCompany = (event) => {
     event.preventDefault();
@@ -114,6 +148,7 @@ function App() {
       name: newCompany.trim(),
       location: newLocation.trim(),
       position: newPosition.trim(),
+      link: newLink.trim(),
       description: newDescription.trim(),
       priority: priority === "yes" ? true : false,
       applied: applied === "yes" ? true : false,
@@ -220,6 +255,9 @@ function App() {
   const handleAppliedChange = (event) => {
     setApplied(event.target.value);
   };
+  const handleLinkInputChange = (event) => {
+    setNewLink(event.target.value);
+  };
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value;
     console.log(searchTerm);
@@ -260,12 +298,6 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <button
-        className="addCompanyButton"
-        onClick={() => setCompanyFormModal(true)}
-      >
-        Add Company
-      </button> */}
       {companyFormModal ? (
         <CompanyForm
           onSubmit={addCompany}
@@ -273,6 +305,8 @@ function App() {
           companyInputValue={newCompany}
           onLocationInputChange={handleLocationInputChange}
           locationInputValue={newLocation}
+          onLinkInputChange={handleLinkInputChange}
+          linkInputValue={newLink}
           onPositionInputChange={handlePositionInputChange}
           positionInputValue={newPosition}
           onDescriptionInputChange={handleDescriptionInputChange}
@@ -285,7 +319,6 @@ function App() {
           closeCompanyFormModal={() => setCompanyFormModal(false)}
         />
       ) : null}
-      <h2>Companies</h2>
       <Notification
         openModal={modal}
         closeModal={() => setModal(false)}
@@ -295,7 +328,7 @@ function App() {
         openConfirmationModal={confirmationModal}
         closeConfirmationModal={() => setConfirmationModal(false)}
         confirmRemove={confirmRemove}
-        // removeCompany={removeCompany}
+        confirmTitle="Delete Job"
       />
       <Filter
         searchValue={newSearch}
@@ -311,7 +344,7 @@ function App() {
       <CompaniesField
         companiesToShow={[...companiesToShow]}
         toggleImportance={toggleImportanceOf}
-        // removeCompany={removeCompany}
+        removeCompany={removeCompany}
         showCompanyDetails={showCompanyDetails}
       />
       {companyDetailsModal && clickedCompany && (
@@ -322,6 +355,7 @@ function App() {
             setClickedCompany(null);
           }}
           toggleImportance={toggleImportanceOf}
+          toggleApplied={toggleApplied}
           removeCompany={removeCompany}
           company={clickedCompany}
         />

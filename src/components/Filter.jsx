@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const Filter = ({
   searchValue,
   onSearchChange,
@@ -11,13 +13,13 @@ const Filter = ({
 }) => {
   return (
     <div className="search-container">
-      <div className="filter-buttons">
+      <div className="filter-inputs">
         <div className="search-wrapper">
           <input
             className="input"
             value={searchValue}
             onChange={onSearchChange}
-            placeholder="Hulu or Boston"
+            placeholder="Search"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -27,9 +29,9 @@ const Filter = ({
           >
             <path
               fill="currentColor"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M15.62 17.03a9 9 0 1 1 1.41-1.41l4.68 4.67a1 1 0 0 1-1.42 1.42l-4.67-4.68ZM17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
           <button className="x-icon" id="button" onClick={onClearSearchClick}>
@@ -58,15 +60,9 @@ const Filter = ({
         </div>
       </div>
       <div className="add-button-container">
-        {optionChoiceRender ? (
-          <button className="add-button" onClick={clickAddButton}>
-            Add Company
-          </button>
-        ) : (
-          <button className="add-button" onClick={clickAddButton}>
-            Add Contact
-          </button>
-        )}
+        <Button className={"add-btn"} onClick={clickAddButton}>
+          {optionChoiceRender ? "Add Company" : "Add Contact"}
+        </Button>
       </div>
     </div>
   );
