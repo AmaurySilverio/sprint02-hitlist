@@ -16,3 +16,11 @@ Error handling is implemented for PUT, POST and DELETE requests.
 - CSS (I love styling)
 
 <img src="public/Screenshot 2025-02-24 at 4.53.00 PM.png">
+
+# How To Run
+
+1. Clone Repository
+2. CD into hitlist directory
+3. run: npm install
+4. run: npm run dev
+5. in a separate terminal run: npm run server (starts JSON server)
