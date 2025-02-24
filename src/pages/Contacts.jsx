@@ -338,7 +338,6 @@ const Contacts = () => {
           closeContactFormModal={() => setContactFormModal(false)}
         />
       ) : null}
-      <h2>Contacts</h2>
       <Filter
         searchValue={newSearch}
         onSearchChange={handleSearchChange}

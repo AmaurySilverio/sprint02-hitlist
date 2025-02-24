@@ -9,21 +9,12 @@
       "applied": false
     },
     {
-      "id": "50b5",
-      "name": "testApplied",
-      "location": "ef",
-      "position": "lasfj",
-      "description": "paragraph here",
-      "priority": true,
-      "applied": false
-    },
-    {
       "id": "78c2",
       "name": "Penn",
       "location": "Philadelphia, PA",
       "position": "Nurse",
       "description": "blah blah",
-      "priority": false,
+      "priority": true,
       "applied": true
     },
     {
@@ -51,25 +42,25 @@
       "position": "Software Engineer",
       "link": "https://savers.org",
       "description": "The input value is automatically validated to ensure that it's either empty or a properly-formatted URL before the form can be submitted. The :valid and :invalid CSS pseudo-classes are automatically applied as appropriate to visually denote whether the current value of the field is a valid URL or not.",
-      "priority": false,
+      "priority": true,
       "applied": true
     }
   ],
   "contacts": [
     {
-      "id": "78d7",
-      "firstName": "john",
-      "lastName": "doe",
-      "jobTitle": "agent",
-      "company": "earth",
-      "location": "",
-      "email": "",
-      "phone": "",
-      "linkedIn": "",
-      "twitter": "",
-      "github": "",
-      "notes": "",
-      "priority": false
+      "id": "82be",
+      "firstName": "Amaury",
+      "lastName": "Silverio",
+      "jobTitle": "Software Engineer",
+      "company": "Resilient Coders",
+      "location": "Philadelphia, PA",
+      "email": "amaurycodes@gmail.com",
+      "phone": "978-744-9760",
+      "linkedIn": "https://www.linkedin.com/in/amaury-silverio/",
+      "twitter": "https://x.com/AmauryCodes",
+      "github": "https://github.com/AmaurySilverio",
+      "notes": "Amaury is a great contact to talk about React and CSS.",
+      "priority": true
     }
   ]
 }

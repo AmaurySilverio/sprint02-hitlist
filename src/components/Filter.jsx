@@ -61,7 +61,7 @@ const Filter = ({
       </div>
       <div className="add-button-container">
         <Button className={"add-btn"} onClick={clickAddButton}>
-          {optionChoiceRender ? "Add Company" : "Add Contact"}
+          {optionChoiceRender ? "Add Job" : "Add Contact"}
         </Button>
       </div>
     </div>

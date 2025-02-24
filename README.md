@@ -14,3 +14,5 @@ Error handling is implemented for PUT, POST and DELETE requests.
 
 - React.JS
 - CSS (I love styling)
+
+<img src="public/Screenshot 2025-02-24 at 4.53.00 PM.png">

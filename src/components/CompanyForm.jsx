@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import Button from "./components/Button";
+import Button from "./Button";
 
 const CompanyForm = ({
   onSubmit,
@@ -39,10 +39,10 @@ const CompanyForm = ({
           closeCompanyFormModal();
         }
       }}
-      className="company-form-dialog"
+      className="form-dialog"
     >
-      <form onSubmit={onSubmit} className="company-form-wrapper">
-        <div className="company-form-content">
+      <form onSubmit={onSubmit} className="form-wrapper">
+        <div className="form-content">
           <div className="company-form-top">
             <div className="company-form-input-data">
               <label htmlFor="company">Company: </label>
@@ -149,9 +149,9 @@ const CompanyForm = ({
           </div>
         </div>
         <div className="company-form-buttons">
-          <Button onClick={closeCompanyFormModal}>Close</Button>
+          <Button onClick={closeCompanyFormModal}>Discard</Button>
           <Button type="submit" className="small-add-btn">
-            Add
+            Add Job
           </Button>
         </div>
       </form>

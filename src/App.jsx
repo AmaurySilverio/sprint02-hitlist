@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import companyService from "./services/companies";
 import Navbar from "./components/Navbar";
-import CompanyForm from "./CompanyForm";
+import CompanyForm from "./components/CompanyForm";
 import Filter from "./components/Filter";
 import CompaniesField from "./components/CompaniesField";
 import Notification from "./components/Notification";
