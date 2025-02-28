@@ -43,8 +43,8 @@ const CompanyForm = ({
     >
       <form onSubmit={onSubmit} className="form-wrapper">
         <div className="form-content">
-          <div className="company-form-top">
-            <div className="company-form-input-data">
+          <div className="form-top">
+            <div className="form-input-data-half-width">
               <label htmlFor="company">Company: </label>
               <input
                 type="text"
@@ -55,7 +55,7 @@ const CompanyForm = ({
                 required
               />
             </div>
-            <div className="company-form-input-data">
+            <div className="form-input-data-half-width">
               <label htmlFor="location">Location: </label>
               <input
                 type="text"
@@ -67,7 +67,7 @@ const CompanyForm = ({
               />
             </div>
           </div>
-          <div className="company-form-input-data-full-width">
+          <div className="form-input-data-full-width">
             <label htmlFor="position">Position: </label>
             <input
               type="text"
@@ -78,7 +78,7 @@ const CompanyForm = ({
               required
             />
           </div>
-          <div className="company-form-input-data-full-width">
+          <div className="form-input-data-full-width">
             <label htmlFor="url">Link: </label>
             <input
               type="url"
@@ -90,7 +90,7 @@ const CompanyForm = ({
               required
             />
           </div>
-          <div className="company-form-input-data-full-width">
+          <div className="form-input-data-full-width">
             <label htmlFor="description">Position Description: </label>
             <textarea
               // type="text"
@@ -105,7 +105,7 @@ const CompanyForm = ({
           </div>
           <div className="radio-btns">
             <label htmlFor="company-apply">Have you applied?</label>
-            <div>
+            <div className="radio-btns-input">
               <input
                 type="radio"
                 id="yes-apply-radio"
@@ -113,7 +113,9 @@ const CompanyForm = ({
                 onChange={onAppliedRadioChange}
                 checked={applied === "yes"}
               />
-              <label htmlFor="yes-apply-radio">Yes</label>
+              <label htmlFor="yes-apply-radio" className="yes-radio-input">
+                Yes
+              </label>
               <input
                 type="radio"
                 id="no-apply-radio"
@@ -148,8 +150,10 @@ const CompanyForm = ({
             </div>
           </div>
         </div>
-        <div className="company-form-buttons">
-          <Button onClick={closeCompanyFormModal}>Discard</Button>
+        <div className="form-buttons">
+          <Button onClick={closeCompanyFormModal} type="button">
+            Discard
+          </Button>
           <Button type="submit" className="small-add-btn">
             Add Job
           </Button>

@@ -17,7 +17,7 @@ const ContactsField = ({
               contact={contact}
               toggleImportance={toggleImportance}
               showContactDetails={showContactDetails}
-              // removeContact={removeContact}
+              removeContact={removeContact}
             />
           ))
         )}

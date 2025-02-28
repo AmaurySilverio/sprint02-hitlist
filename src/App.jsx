@@ -338,7 +338,7 @@ function App() {
         // submitType="submit"
         selectedItem={selectedItem}
         handleSetSelectedItem={handleSetSelectedItem}
-        optionChoiceRender={applied === "no"}
+        optionChoiceRender={applied}
         clickAddButton={() => setCompanyFormModal(true)}
       />
       <CompaniesField

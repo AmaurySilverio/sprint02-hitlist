@@ -64,7 +64,7 @@ const Contacts = () => {
       location: location.trim(),
       email: email.trim(),
       phone: phone.trim(),
-      // chat: chat.trim(),
+      chat: chat.trim(),
       linkedIn: linkedIn.trim(),
       twitter: twitter.trim(),
       github: github.trim(),
@@ -130,7 +130,7 @@ const Contacts = () => {
         console.log(error);
       });
   };
-  0;
+  // 0;
 
   const contactsToShow =
     filteredContacts.length === 0 && newSearch.trim() !== ""
@@ -302,6 +302,9 @@ const Contacts = () => {
     setClickedContact(contact);
     setContactDetailsModal(true);
   };
+  const handleEdit = () => {
+    console.log("edit clicked");
+  };
   return (
     <>
       <Navbar />
@@ -342,8 +345,6 @@ const Contacts = () => {
         searchValue={newSearch}
         onSearchChange={handleSearchChange}
         onClearSearchClick={handleClearSearchClick}
-        // onSubmitClick={handleSearchSubmit}
-        // submitType="submit"
         selectedItem={selectedItem}
         handleSetSelectedItem={handleSetSelectedItem}
         clickAddButton={() => setContactFormModal(true)}
@@ -351,7 +352,7 @@ const Contacts = () => {
       <ContactsField
         contactsToShow={[...contactsToShow]}
         toggleImportance={toggleImportanceOf}
-        // removeContact={removeContact}
+        removeContact={removeContact}
         showContactDetails={showContactDetails}
       />
       <Notification
@@ -363,6 +364,7 @@ const Contacts = () => {
         openConfirmationModal={confirmationModal}
         closeConfirmationModal={() => setConfirmationModal(false)}
         confirmRemove={confirmRemove}
+        confirmTitle="Delete Contact"
       />
       {contactDetailsModal && clickedContact && (
         <ContactDetails
@@ -372,6 +374,7 @@ const Contacts = () => {
             setClickedContact(null);
           }}
           toggleImportance={toggleImportanceOf}
+          handleEdit={handleEdit}
           removeContact={removeContact}
           contact={clickedContact}
         />

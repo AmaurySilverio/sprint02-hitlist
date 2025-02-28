@@ -1,4 +1,6 @@
 import Button from "./Button";
+import { useState, useEffect } from "react";
+import documentService from "../services/documents";
 
 const Filter = ({
   searchValue,
@@ -11,6 +13,30 @@ const Filter = ({
   optionChoiceRender,
   clickAddButton,
 }) => {
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [documents, setDocuments] = useState([]);
+
+  const documentsClicked = () => {
+    setShowDropDown(!showDropDown);
+  };
+
+  useEffect(() => {
+    documentService.getAll().then((initialDocuments) => {
+      setDocuments(initialDocuments);
+    });
+    // .catch((error) => {
+    //   setModal(true);
+    //   setErrorMessage(
+    //     "There is a problem with the server. Please refresh the page."
+    //   );
+    //   setTimeout(() => {
+    //     setModal(false);
+    //     setErrorMessage("");
+    //   }, 5000);
+    //   console.log(error);
+    // });
+  }, []);
+
   return (
     <div className="search-container">
       <div className="filter-inputs">
@@ -59,7 +85,29 @@ const Filter = ({
           </label>
         </div>
       </div>
-      <div className="add-button-container">
+      <div
+        className="add-button-container"
+        onMouseLeave={() => setShowDropDown(false)}
+      >
+        <div className="documents-dropdown-wrapper">
+          <Button className={"document-btn"} onClick={documentsClicked}>
+            My Documents
+          </Button>
+          {showDropDown && (
+            <div className="documents-dropdown-container">
+              {documents.map((document) => (
+                <a
+                  key={document.id}
+                  className="dropdown-item"
+                  href={document.document}
+                  target="_blank"
+                >
+                  {document.title}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
         <Button className={"add-btn"} onClick={clickAddButton}>
           {optionChoiceRender ? "Add Job" : "Add Contact"}
         </Button>

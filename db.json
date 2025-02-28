@@ -6,7 +6,7 @@
       "location": "Philadelphia",
       "position": "Software Engineer",
       "priority": true,
-      "applied": false
+      "applied": true
     },
     {
       "id": "78c2",
@@ -14,8 +14,8 @@
       "location": "Philadelphia, PA",
       "position": "Nurse",
       "description": "blah blah",
-      "priority": true,
-      "applied": true
+      "priority": false,
+      "applied": false
     },
     {
       "id": "8ce7",
@@ -23,8 +23,8 @@
       "location": "Atlanta, GA",
       "position": "Software Engineer",
       "description": "Full time SWE position. 2 years of experience required.",
-      "priority": false,
-      "applied": false
+      "priority": true,
+      "applied": true
     },
     {
       "id": "a93c",
@@ -43,7 +43,7 @@
       "link": "https://savers.org",
       "description": "The input value is automatically validated to ensure that it's either empty or a properly-formatted URL before the form can be submitted. The :valid and :invalid CSS pseudo-classes are automatically applied as appropriate to visually denote whether the current value of the field is a valid URL or not.",
       "priority": true,
-      "applied": true
+      "applied": false
     }
   ],
   "contacts": [
@@ -61,6 +61,42 @@
       "github": "https://github.com/AmaurySilverio",
       "notes": "Amaury is a great contact to talk about React and CSS.",
       "priority": true
+    },
+    {
+      "id": "7023",
+      "firstName": "Joe",
+      "lastName": "Shmo",
+      "jobTitle": "Shmoozer",
+      "company": "Boobie inspector",
+      "location": "ur moms house",
+      "email": "amaury@google.com",
+      "phone": "978-543-9090",
+      "chat": "2025-02-12",
+      "linkedIn": "https://www.linkedin.com/in/amaury-silverio/",
+      "twitter": "https://x.com/AmauryCodes",
+      "github": "https://github.com/AmaurySilverio/",
+      "notes": "blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+      "priority": true
+    }
+  ],
+  "documents": [
+    {
+      "id": "de7d",
+      "typeOfDocument": "resume",
+      "document": "https://eef",
+      "title": "test1"
+    },
+    {
+      "id": "525a",
+      "typeOfDocument": "portfolio",
+      "document": "https://eef",
+      "title": "test4"
+    },
+    {
+      "id": "3de0",
+      "typeOfDocument": "resume",
+      "document": "https://eef",
+      "title": "test5"
     }
   ]
 }

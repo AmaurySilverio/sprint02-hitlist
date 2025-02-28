@@ -19,9 +19,12 @@ const CompanyDetails = ({
     }
   }, [openCompanyDetailsModal]);
   const star = company.priority ? "fa-solid fa-star" : "fa-regular fa-star";
+  const checkOr = company.applied
+    ? "fa-solid fa-check"
+    : "fa-solid fa-hourglass-half";
   return (
     <dialog
-      className="company-dialog"
+      className="company-details-dialog"
       ref={ref}
       onCancel={closeCompanyDetailsModal}
       onClick={(e) => {
@@ -31,14 +34,14 @@ const CompanyDetails = ({
       }}
     >
       <div className="company-details-wrapper">
-        <div className="company-details-top-page">
-          <div className="company-details-content">
+        <div className="details-container">
+          <div className="details-content">
             <h2>{company.name}</h2>
             <p>{company.location}</p>
             <h3>{company.position}</h3>
             <p className="job-description">{company.description}</p>
           </div>
-          <div className="company-details-toggles">
+          <div className="details-toggles">
             <a
               href={company.link}
               target="_blank"
@@ -54,15 +57,25 @@ const CompanyDetails = ({
               style={{ color: "#FFD43B" }}
               onClick={() => toggleImportance(company.id)}
             ></i>
-            <Button
+            {/* <i
+              className="icon-border fa-solid fa-pen-to-square"
+              style={{ color: "#7d7d7d" }}
+              onClick={handleEdit}
+            ></i> */}
+            <i
+              className={`icon-border ${checkOr}`}
+              style={{ color: "#7d7d7d" }}
+              onClick={() => toggleApplied(company.id)}
+            ></i>
+            {/* <Button
               className={company.applied ? "applied-btn" : ""}
               onClick={() => toggleApplied(company.id)}
             >
               {company.applied ? "Applied!" : "Applied?"}
-            </Button>
+            </Button> */}
           </div>
         </div>
-        <div className="company-details-buttons">
+        <div className="details-buttons">
           <Button onClick={closeCompanyDetailsModal}>Close</Button>
           <Button
             onClick={() => removeCompany(company.id)}
